@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .calculator {
+            width:600px; 
+            height: 700px;
+            background-color: lightgray;
+            position: relative;
+            margin: 30px auto;
+            border-radius: 10px;
+        }
+        .main { 
+            position: absolute;
+            top:20px; left:15px; 
+            width:560px; height: 100px;
+            border: 3px solid black;
+            border-radius: 20px;
+            background-color: rgb(233, 233, 233);
+            font-size: 40px;
+            text-align: right;
+            
+        }
+        .calBtn { position: absolute; top: 180px; left:-10px;}
+        .btn {
+        width:100px; height:60px; margin-left: 40px; margin-bottom: 40px;
+        border-radius: 10px; font-size: 20px; font-weight: bold;
+    }
+    </style>
+</head>
+<body>
+    <div class="calculator">
+        <input type="text" class="main" value="0" id="value">
+
+        <div class="calBtn">
+            <input type="button" value="CE" class="btn" name="clear">
+            <input type="button" value="(" class="btn" name="op">
+            <input type="button" value=")" class="btn" name="op">
+            <input type="button" value="*" class="btn" name="op">
+            <input type="button" value="7" class="btn" name="num">
+            <input type="button" value="8" class="btn" name="num">
+            <input type="button" value="9" class="btn" name="num">
+            <input type="button" value="/" class="btn" name="op">
+            <input type="button" value="4" class="btn" name="num">
+            <input type="button" value="5" class="btn" name="num">
+            <input type="button" value="6" class="btn" name="num">
+            <input type="button" value="-" class="btn" name="op">
+            <input type="button" value="1" class="btn" name="num">
+            <input type="button" value="2" class="btn" name="num">
+            <input type="button" value="3" class="btn" name="num">
+            <input type="button" value="+" class="btn" name="op">
+            <input type="button" value="." class="btn" name="op">
+            <input type="button" value="0" class="btn" name="num">
+            <input type="button" value="del" class="btn" name="back">
+            <input type="button" value="=" class="btn" name="op">
+        </div>
+    </div>
+    <script>
+        let value = document.getElementById('value');
+        let buttons = document.querySelectorAll('input[type = button]');
+        let result;
+        let num;  
+        buttons.forEach(button => 
+            console.log(button.getAttribute('value'))
+            );
+      
+       
+    </script>
+</body>
+</html>

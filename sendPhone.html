@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../JSCR_278-master/C02/034/style.css"/>
+  <style>
+  </style>
+</head>
+<body>
+  <main>
+    <form action="">
+      <h1>입력폼</h1>
+          <h2>전화번호를 입력해주세요</h2>
+        <input type="tel" placeholder="전화번호" id="phoneNumber">
+        <p class="caption"><small>※ 실제로 데이터는 전송되지 않음</small></p>
+      <button class="submitBtn" type="submit">데이터 전송</button>
+    </form>
+  </main>
+  <script>
+    
+    const submitBtn = document.querySelector('.submitBtn');
+    submitBtn.addEventListener('click', ()=>{
+      const phoneNumber = document.querySelector('#phoneNumber').value;
+
+      const trimmedPhoneNumber = phoneNumber.replace(/-/g, '');
+
+      alert(`전화번호는 ${trimmedPhoneNumber} 입니다.`);
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input { width:100px; height: 80px; font-size: 24px;}
+    </style>
+</head>
+<body>
+    <h1>day mode / night mode</h1>
+    <input type="button" value="night" id="visual" onclick="toggle()">
+
+    <script>
+        let visual = document.getElementById('visual'); 
+        let body =  document.querySelector('body');
+        
+        function toggle() {
+            if (  visual.value === 'night'   ){
+                body.style.backgroundColor = 'black';
+                body.style.color = 'white';
+                visual.setAttribute('value','day');
+            }
+            else {
+                body.style.backgroundColor = 'white';
+                body.style.color = 'black';
+                visual.setAttribute('value','night');
+            }
+        }
+    </script>
+</body>
+</html>

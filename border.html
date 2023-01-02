@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 100px;
+        }
+
+        div {
+            width: 200px;
+            height: 200px;
+            float: left;
+            margin-left: 100px;
+        }
+
+        .d1 {
+            border: 10px outset transparent;
+            border-image: linear-gradient(-45deg, orange, blue);
+            border-image-slice: 1;
+        }
+
+        .d2 {
+            border: 10px solid transparent;
+            border-radius: 50%;
+            background-image: linear-gradient(#fff, #fff),
+                linear-gradient(to right, red 0%, orange 100%);
+            background-origin: border-box;
+            background-clip: content-box, border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="d1"></div>
+    <div class="d2"></div>
+</body>
+
+</html>

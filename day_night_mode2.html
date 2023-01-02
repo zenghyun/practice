@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input { width:100px; height: 80px; font-size: 24px;}
+        li { list-style: none;}
+        li > a { text-decoration: none; color:powderblue}
+    </style>
+</head>
+<body>
+    <h1>day mode / night mode</h1>
+    <ul>
+        <li><a href="a.html">1. 소개</a></li>
+        <li><a href="b.html">2. 개요</a></li>
+        <li><a href="c.html">3. 위치</a></li>
+        <li><a href="d.html">4. 약관</a></li>
+    </ul>
+    <input type="button" value="night" id="visual" onclick="toggle(this)">
+
+    <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Impedit molestias illo recusandae rem dicta soluta enim optio dolorem, in culpa rerum totam quibusdam ipsa laudantium assumenda? Autem alias magni animi.</p>
+
+    <script>
+        
+        let Link = {
+            setColor: function (color) {
+            let links = document.querySelectorAll('a');
+            for(var i = 0; i< links.length; i++){
+                links[i].style.color = color;
+            }
+        }}
+        
+        let Body = {
+            setColor: function (color){
+                document.querySelector('body').style.color = color; 
+            },
+            setBackgroundColor: function(color){
+                document.querySelector('body').style.backgroundColor = color;
+            }
+        }
+
+        function toggle(self) {
+            if (  self.value === 'night'   ){
+                Body.setBackgroundColor('black');
+                Body.setColor('white');
+                self.value = 'day';
+                Link.setColor('orange');
+            }
+            else {
+                Body.setBackgroundColor('white');
+                Body.setColor('black');
+                self.value = 'night'
+                Link.setColor('powderblue');
+
+            }
+        }
+    </script>
+</body>
+</html>

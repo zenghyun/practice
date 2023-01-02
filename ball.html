@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: rgba(250, 128, 114, 0.82);
+            border-radius: 50%;
+            margin: 50px auto;
+            position: relative;
+            animation: ball 1s paused infinite alternate;
+        }
+        @keyframes ball {
+            from { top: 0px;}
+            to { top:500px;}
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <button class="start">start</button>
+    <button class="stop">stop</button>
+    
+    <script>
+        const ball = document.querySelector('div');
+        
+        const start = document.querySelector('.start');
+        start.addEventListener('click', () => {
+            ball.style.animationPlayState= 'running';
+        })
+
+        const stop = document.querySelector('.stop');
+        stop.addEventListener('click', () => {
+            ball.style.animationPlayState = 'paused';
+        })
+    </script>
+</body>
+</html>

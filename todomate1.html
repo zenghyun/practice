@@ -1,0 +1,186 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./main.js"></script>
+    <link rel="stylesheet" href="./main.css">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+    />
+    <style>
+      *{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: #f8f8f8;
+}
+
+.main-screen {
+    position: absolute;
+    left: 2%;
+    top: 10px;
+    width: 96%;
+    height: calc(100% - 20px);
+    max-width: 768px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.todo-input {
+    position: absolute;
+    left: 5%;
+    top: 10px;
+    width: 75%;
+    height: 50px;
+    border: 2px solid green;
+    border-radius: 5px;
+    padding-left: 10px;
+    transition: 1s;
+}
+
+.todo-button {
+    position: absolute;
+    left: 81%;
+    top: 10px;
+    width: 15%;
+    height: 50px;
+    border: 2px solid black;
+    border-radius: 5px;
+    text-align: center;
+    padding-top: 15px;
+    transition: 1s;
+    font-weight: bold;
+}
+
+.todo-button:hover {
+    background-color: rgb(180, 255, 160);
+    font-size: 1.5rem;
+    padding-top: 10px;
+}
+
+.todo-list {
+    position: absolute;
+    left: 5%;
+    top: 70px;
+    width: 91%;
+    height: 90%;
+    background-color: white;
+}
+
+.todo-card {
+    width: 100%;
+    height: 50px;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    background-color: rgb(240, 240, 240);
+    transition: 1s;
+    font-size: 2rem;
+    vertical-align: middle;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+.todo-card:hover {
+    box-shadow: 5px 5px 5px rgba(90, 84, 84, 0.288);
+}
+.todo-check {
+    position: absolute;
+    left: 80%;
+}
+
+.todo-check:hover {
+    color: green;
+}
+
+.todo-delete {
+    position: absolute;
+    left: 90%;
+}
+
+.todo-delete:hover {
+    color: red;
+}
+
+.checked {
+    /* 체크 시 취소선 추가를 위함 */
+    text-decoration: line-through;
+}
+    </style>
+    <title>Todo</title>
+</head>
+<body>
+    <div class="main-screen">
+        <input type="text" class="todo-input" placeholder="Add Todo">
+        <div class="todo-button">Add</div>
+        <div class="todo-list"></div>
+    </div>
+    
+    <script>
+   
+
+const addTodo = (todoList) => { // 인자로 투두리스트를 받아줍니다.
+    if (!document.querySelector(".todo-input").value == ""){ 
+        // 만약 투두인풋에 내용이 쓰여있다면
+        todoList.appendChild(createTodo(document.querySelector(".todo-input").value)) 
+        // createTodo를 통해 만들어준 노드를 todolist에 바로 넣어버림
+        document.querySelector(".todo-input").value = ""
+        // 투두 인풋을 초기화해줍니다.
+    }
+}
+
+const createTodo = (todo) => {
+    let newTodo = document.createElement("div") // div노드 생성
+    let todoText = document.createTextNode(todo) // 투두 내용을 넣어줄 text생성
+    let checkIcon = document.createElement("i") // font awesome icon 생성
+    let deleteIcon = document.createElement("i")// font awesome icon 생성
+
+    // 비어있는 노드들에 css와 연동되게끔 class를 넣어줍니다.
+    checkIcon.classList.add("todo-check", "fa-solid", "fa-check")
+    deleteIcon.classList.add("todo-delete", "fa-solid", "fa-trash")
+    newTodo.classList.add("todo-card")
+
+    // check와 delete가 실행되게 노드에 onclick시 실행될 함수를 작성해줍니다.
+    // 함수의 인자로는 클릭 된 본인 노드를 보내줍니다.
+    checkIcon.onclick = () => checkTodo(checkIcon)
+    deleteIcon.onclick = () => deleteTodo(deleteIcon)
+
+    // 새로운 Todo노드를 만들어 리턴해줍니다.
+    newTodo.appendChild(checkIcon)
+    newTodo.appendChild(deleteIcon)
+    newTodo.appendChild(todoText)
+    return newTodo
+}
+
+const checkTodo = (elem) => {
+    elem.parentNode.classList.toggle("checked")
+    //toggle함수를 통해 미리 정의해둔 checked class를 삽입 혹은 삭제해줍니다.
+}
+
+const deleteTodo = (elem) => {
+    elem.parentNode.parentNode.removeChild(elem.parentNode)
+    // 인자로 받아진 노드의 부모의 부모노드로 거슬러올라가 그곳에서 Todo를 지워줍니다.
+}
+
+window.onload = (() => { 
+    // HTML로드 시 자바스크립트 파일이 먼저 실행되는것을 막기 위해 onload로 html요소가 다 불러와졌을 때 실행되게끔 해줍니다.
+    let todoList = document.querySelector(".todo-list") // 선택자를통해 todolist를 선택
+    document.querySelector(".todo-button").onclick = () => {addTodo(todoList)} // onclick -> 누르면 실행되는 함수로 addTodo를 넣어줍니다.
+
+    document.addEventListener("keydown", (e) => {
+        if(e.key == "Enter" ) { 
+            // 엔터키 입력이 발생하는경우 실행되는 함수
+            // 한글입력시 두번 실행되는것을 방지함
+            addTodo(todoList)
+        }
+    })
+})
+
+    </script>
+</body>
+</html>

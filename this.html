@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <button id="button">click</button>
+  <script>
+    // this는 함수가 호출될 때 결정이 된다
+    // 화살표 함수에서의 this는 함수가 속해있는 곳의 상위 this를 계승 받는다.
+    const car = {
+      name : 'KIA',
+      getName : function() {
+        console.log("car getName", this);
+      },
+    };
+
+    car.getName(); // A.b
+
+    const globalCar = car.getName;
+   // globalCar();       // b
+
+    const car2 = {
+      name :"hyundai",
+      getName : car.getName,
+    };  
+    car2.getName();
+
+  //  const btn = document.getElementById("button");
+  //  btn.addEventListener('click', car.getName); 
+    
+   // this의 값을 고정시키기 위한 함수 .bind() 
+   const btn = document.getElementById("button");
+    btn.addEventListener('click', car.getName.bind(car)); 
+
+
+    const  bindGetName = car2.getName.bind(car2);   
+    bindGetName();
+    // quiz
+
+    // const testCar = {
+    //   name : "benz",
+    //   getName : function () {
+    //     console.log("getname", this);
+    //     const innerFunc = function() {
+    //       console.log("innerFunc", this);
+    //     };
+    //     innerFunc(); 
+    //     // .(닷)이 없다 겉보기에는 testCar가 호출하는 것 같지만 .이 없기때문에 window 객체가 호출한 것이다.
+    //   }
+    // };
+    // testCar.getName();
+    
+
+
+
+    const testCar = {
+      name : "benz",
+      getName : function () {
+        console.log("getname", this);
+        const innerFunc = () => {
+          console.log("innerFunc", this); // <= 여기서 this를 위의 this랑 같게 하는 법 화살표 함수를 사용하면 된다!!! 
+          // 즉 화살표 함수에서의 this는 내 상위 스코프에 속해있는 this를 계승 받기 때문에 같은 결과가 나오게 된다.
+          // 참고로 화살표 함수는 bind 함수(바인딩)을 제공하지 않는다.
+        };
+        innerFunc(); // .(닷)이 없다 겉보기에는 testCar가 호출하는 것 같지만 .이 없기때문에 window 객체가 호출한 것이다.
+      }
+    };
+    testCar.getName();
+
+
+    // this를 쓰고 싶으면 일반 함수를 써라! 
+    // 함수 안에있는 함수같은 경우 같은 this를 쓴다면 화살표 함수도 괜찮다.
+
+
+    //quiz 
+    const unit ="하이";
+    const ageTest = {
+      unit : "살",
+      ageList : [10, 20, 30],
+      getAgeList : function() {
+        const result = this.ageList.map(function (age) {
+          console.log(this);
+          return age + ageTest.unit;
+        });
+        console.log(result);
+      },
+    };
+    console.log(ageTest.ageList);
+    ageTest.getAgeList();
+
+//     1) const result = this.ageList.map(function(age){
+//     return age + ageTest.unit;
+// });
+
+// 2) const result = this.ageList.map((age)=>{
+//     return age + this.unit;
+// });
+  </script>
+</body>
+</html>

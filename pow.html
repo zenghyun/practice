@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button onclick="powStart()">click!</button>
+    <script>
+    //    let userName = 'lee';
+
+
+    //    alert(`hello ${userName}!`);
+
+
+    //    function showMessage(){
+    //        userName = 'zenghyun';
+    //     alert(`hello ${userName}!`);
+    //    }
+
+    //    showMessage();
+       
+    </script>
+    <script>
+        // function showMessage(from, text){
+        //     alert(from + " : " + text);
+        // } 
+        // showMessage('Hello', 'lee');
+        // showMessage('nice', 'lee');
+    </script>
+    <script>
+        // function showMessage(from, text='no text given'){
+        //     alert (from + " : " + text);
+        // }
+        // showMessage('zenghyun', 3);
+    </script>
+    <script>
+        // 문제 1 ? 나 || 사용하기
+        // function checkAge(age){
+        //  // let value =   age > 18 ? 'true' : confirm('보호자의 동의를 받으셨나요?');
+        //  let value = (age > 18) || confirm('보호자의 동의를 받으셨나요?');  
+        //  console.log(value);
+        // }
+
+        // checkAge(144);
+    </script>
+    <script>
+        // 문제 2 min(a,b) 함수 만들기
+        // function min (num1,num2){
+            // if ( num1 > num2 ){
+                //     return console.log(`== ${num2}`); 
+                // }
+                // return console.log(`== ${num1}`);
+                // return num1 < num2 ? console.log(`== ${num1}`) :console.log(`== ${num2}`);
+                // }
+        // min(2,5);
+        // min(3,-1);
+        // min(1,1);
+    </script>
+    <script>
+        "use strict";
+        function powStart() {
+        let x = prompt('x?');
+        let y = prompt('x?');
+        
+        
+        let checkNum = function(value){
+            if(value < 1){
+                alert("입력 값은 1이상의 자연수이어야 합니다.");
+                return returnPrompt(value);
+            }
+            return value;
+        };
+
+         let returnPrompt = function(value){
+            let lessThanOne = true
+            while(lessThanOne){
+                value = prompt('x?');
+                if( value < 1){
+                    console.log(value);             
+                    return checkNum(value);      
+                }
+                lessThanOne = false;
+            }
+            return value;
+        };
+
+       let pow = function(num1,num2){
+         let result = num1 ** num2;
+        return alert(`${num1}의 ${num2}승은 ${result}입니다.`);
+        };
+        
+        pow(checkNum(x),checkNum(y));
+    }
+    
+</script>
+</body>
+</html>
