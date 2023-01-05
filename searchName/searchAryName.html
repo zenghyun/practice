@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+    <input type="text" id="searchId">
+    <p id="searchResult"></p>
+  <script>
+    const userList = [
+      {id:123, name:'홍길동'},
+      {id:5653, name:'김길동'},
+      {id:967, name:'서길동'},
+    ];
+    const searchIdText = document.querySelector('#searchId');
+    const searchResult = document.querySelector('#searchResult');
+
+    searchIdText.addEventListener('keyup', () => {
+
+      const IdText = parseInt(searchIdText.value); 
+      
+      findUser(IdText);
+    })
+
+    function findUser(IdText) {
+      const targetData = userList.find((data) => data.id === IdText);
+
+      if( targetData == null){
+        searchResult.innerHTML = '존재하는 유저가 없습니다.'
+        return;
+      }
+      searchResult.innerHTML = targetData.name;
+
+    }
+  </script>
+</body>
+</html>

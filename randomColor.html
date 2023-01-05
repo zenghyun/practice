@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-        .container{
+        .container {
             width: 50%;
             height: 300px;
             margin: 50px auto;
             border: 10px solid black;
         }
-        .btn { width: 80px; margin-top: 30px; margin-left: 80px;}
-        .rectangle { 
+
+        .btn {
+            width: 80px;
+            margin-top: 30px;
+            margin-left: 80px;
+        }
+
+        .rectangle {
             margin: 20px auto;
-            width: 800px; height:200px; border: 5px solid black;
-            --start : hsl(0, 100%, 50%);
-            --end : hsl(320, 100%, 50%);
-            background-image:  linear-gradient(45deg, var(--start), var(--end));
+            width: 800px;
+            height: 200px;
+            border: 5px solid black;
+            --start: hsl(0, 68%, 74%);
+            --end: hsl(320, 100%, 50%);
+            background-image: linear-gradient(45deg, var(--start), var(--end));
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <button class="btn">click</button>
@@ -29,19 +39,20 @@
     </div>
 
     <script>
-        let rectangle = document.querySelector('.rectangle'); 
+        let rectangle = document.querySelector('.rectangle');
         let btn = document.querySelector('.btn');
 
-        btn.addEventListener('click', onClickBtn); 
+        btn.addEventListener('click', onClickBtn);
 
-        function onClickBtn(){
-            let randomHue = Math.trunc(Math.random()*360);
+        function onClickBtn() {
+            let randomHue = Math.trunc(Math.random() * 360);
             let randomStart = `hsl(${randomHue}, 100%, 50%)`;
-            let randomend = `hsl(${randomHue+40}, 100%, 50%)`;
+            let randomend = `hsl(${randomHue + 40}, 100%, 50%)`;
 
             rectangle.style.setProperty('--start', randomStart);
             rectangle.style.setProperty('--end', randomEnd);
-}
-</script>
+        }
+    </script>
 </body>
+
 </html>

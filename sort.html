@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      width: 500px;
+      height: 550px;
+      border: 3px solid black;
+      margin: 50px auto;
+    }
+
+    button {
+      width: 150px;
+      height: 40px;
+      position: relative;
+      left: 100px;
+      top: 40px;
+    }
+
+    #userList {
+      text-align: center;
+      margin-top: 80px;
+    }
+
+    li {
+      list-style: none;
+      font-size: 40px;
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <button id="ascending">오름차순</button>
+    <button id="descending">내림차순</button>
+    <ul id="userList">
+    </ul>
+  </div>
+
+  <script>
+    const userDataList = [
+      { id: 123, name: '홍길동' },
+      { id: 3, name: '서길동' },
+      { id: 47, name: '박길동' },
+      { id: 763, name: '김길동' },
+      { id: 14, name: '최길동' }
+    ];
+
+    const ascending = document.querySelector('#ascending');
+    const descending = document.querySelector('#descending');
+
+    function updateList() {
+      let liText = '';
+
+      for (const data of userDataList) {
+        liText += `<li> ${data.id} : ${data.name}</li>`;
+      }
+
+      const userList = document.querySelector('#userList').innerHTML = liText;
+    }
+
+    function sortByAscending() {
+      userDataList.sort((a, b) => {
+        // console.log(`a.id : ${ a.id} , b.id : ${b.id}`);
+        // console.log(a.id - b.id);
+        return a.id - b.id;
+      })
+      updateList();
+    }
+
+    function sortByDescending() {
+      userDataList.sort((a, b) => {
+        // console.log(`a.id : ${ a.id} , b.id : ${b.id}`);
+        // console.log(b.id - a.id);
+        return b.id - a.id;
+      })
+      updateList();
+    }
+
+    ascending.addEventListener('click', () => {
+      sortByAscending();
+    })
+
+    descending.addEventListener('click', () => {
+      sortByDescending();
+    })
+
+    sortByAscending();
+  </script>
+</body>
+
+</html>

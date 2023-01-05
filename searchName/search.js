@@ -12,6 +12,7 @@ const prefectureList = document.querySelectorAll('#prefecture-list button');
 searchWordText.addEventListener('keyup', () =>{
 
   const searchWord = searchWordText.value;
+  
 
     prefectureList.forEach( (element) => {
       
