@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    p {
+      font-size: 100px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <button>count!</button>
+  <p class="log"></p>
+
+  <script>
+    document.querySelector('button').addEventListener('click', () => {
+
+      const goalTime = 10000;
+      const oldTime = Date.now();
+      
+      const timer = setInterval( () => {
+        const currentTime = Date.now(); 
+  
+        const diffMsec = currentTime - oldTime;
+  
+        const countDown = Math.ceil((goalTime-diffMsec)/1000);
+  
+        label = `남은 시간은 ${countDown}초 입니다.`
+  
+        if (countDown < 0){
+          label = "종료";
+          clearInterval(timer);
+        }
+  
+        document.querySelector('.log').innerHTML =label;
+      }, 1000)
+
+    })
+  </script>
+</body>
+</html>
