@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+      <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+  /* Import font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(136, 135, 135);
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+/* General styles end */
+.icon {
+    position: relative;
+    font-size: 54px;
+    color: #fff;
+    transform-origin: top;
+    animation: anim 1s forwards infinite;
+}
+
+.icon::before {
+    content: attr(data-number);
+    position: absolute;
+    top: 10px;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background-color: #7EFFB2;
+    font-size: 14px;
+    color: #090909;
+    display: grid;
+    place-items: center;
+    border: 2px solid #090909;
+    border-radius: 50%;
+}
+
+@keyframes anim {
+    10% {
+        rotate: 15deg;
+    }
+
+    20% {
+        rotate: -15deg;
+    }
+
+    30% {
+        rotate: 15deg;
+    }
+
+    50% {
+        rotate: 0deg;
+    }
+}
+  </style>
+</head>
+<body>
+  <div class="icon" data-number="5">
+    <i class="ri-notification-4-fill"></i>
+</div>
+</body>
+</html>

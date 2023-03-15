@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    button {
+      width: 150px;
+      height: 100px;
+      font-size: 20px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+
+<body>
+  <button>Give me color</button>
+  <script>
+    const $button = document.querySelector('button');
+    const $body = document.querySelector('body');
+    let random1;
+    let random2;
+    $button.addEventListener('click', () => {
+      const aryColor = ["#fc8b7e", "#7efc9b", "#a47efc", "#ddec5a", "#f8c244", "#4465f8"];
+      random1 = Math.floor(Math.random() * aryColor.length);
+      random2 = Math.floor(Math.random() * aryColor.length);
+
+      checkNum(random1, random2, aryColor);
+
+      $body.style.background = `linear-gradient(135deg,${aryColor[random1]}, ${aryColor[random2]})`;
+    });
+
+    function checkNum(num1, num2, ary) {
+      if (num1 === num2) {
+        num2 -= 1;
+        num2 < 0 ? num2 = ary.length - 1 : num2;
+        changeNum(num2);
+      }
+      return;
+    }
+
+    function changeNum(num) {
+      random2 = num;
+    }
+  </script>
+</body>
+
+</html>
